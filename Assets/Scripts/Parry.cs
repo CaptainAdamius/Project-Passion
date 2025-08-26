@@ -8,54 +8,71 @@ public class Parry : MonoBehaviour
     [SerializeField] TextMeshProUGUI GuardText;
     float parryCooldown = 0;
     float parryTime = 0;
-    int guardState;
+    enum GuardState
+    {
+        Idle,
+        Guarding,
+        Parrying
+    }
+    GuardState gs = GuardState.Idle;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        parryTime = 2;
-        parryCooldown = 2;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Managing cooldowns for the parry mechanic
         if (parryTime > 0)
         {
             parryTime -= Time.deltaTime;
-        } else if (guardState == 2)
+        } else if (gs == GuardState.Parrying)
         {
-            guardState = 0;
+            gs = GuardState.Idle;
         }
         if (parryCooldown > 0)
         {
             parryCooldown -= Time.deltaTime;
         }
 
-
+        // Display for parry values & guard state
         TimeText.text = "Parry time = "+Mathf.Max(parryTime, 0).ToString("F2");
         CDText.text = "Cooldown = "+Mathf.Max(parryCooldown, 0).ToString("F2");
-        GuardText.text = "Guard state = "+guardState.ToString();
+        GuardText.text = "Guard state = "+gs.ToString();
 
+        // Setting guard states with the Parry button (Space bar)
         if (Input.GetKeyDown(KeyCode.Space) && parryCooldown <= 0)
         {
             ParryStart();
         }
-
         if (Input.GetKey(KeyCode.Space) && parryTime <= 0)
         {
-            guardState = 1;
+            GuardStart();
         }
         else if (parryTime <= 0)
         {
-            guardState = 0;
+            IdleStart();
         }
 
     }
 
     public void ParryStart()
     {
-            parryCooldown = 0.5f;
-            parryTime = 0.2f;
-            guardState = 2;
+        parryCooldown = 0.5f;
+        parryTime = 0.2f;
+        gs = GuardState.Parrying;
+    }
+
+    public void GuardStart()
+    {
+        gs = GuardState.Guarding;
+    }
+
+    public void IdleStart()
+    {
+        gs = GuardState.Idle;
     }
 }

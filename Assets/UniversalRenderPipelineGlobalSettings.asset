@@ -61,8 +61,12 @@ MonoBehaviour:
       - rid: 5679743405954695169
       - rid: 5679743405954695170
 <<<<<<< HEAD
+<<<<<<< HEAD
       - rid: -2
       - rid: 5679743439557099520
+=======
+      - rid: 5679743405954695171
+>>>>>>> parent of b82dd92 (Fixing some things)
 =======
       - rid: 5679743405954695171
 >>>>>>> parent of b82dd92 (Fixing some things)
@@ -202,6 +206,9 @@ MonoBehaviour:
         smaaAreaTex: {fileID: 2800000, guid: d1f1048909d55cd4fa1126ab998f617e, type: 3}
         smaaSearchTex: {fileID: 2800000, guid: 51eee22c2a633ef4aada830eed57c3fd, type: 3}
         m_TexturesResourcesVersion: 0
+<<<<<<< HEAD
+>>>>>>> parent of b82dd92 (Fixing some things)
+=======
 >>>>>>> parent of b82dd92 (Fixing some things)
     - rid: 7752762179098771456
       type: {class: UniversalRenderPipelineRuntimeTextures, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}

@@ -90,7 +90,15 @@
     "com.unity.burst": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       "version": "1.8.19",
+=======
+      "version": "1.8.23",
+>>>>>>> parent of b82dd92 (Fixing some things)
+=======
+      "version": "1.8.23",
+>>>>>>> parent of b82dd92 (Fixing some things)
 =======
       "version": "1.8.23",
 >>>>>>> parent of b82dd92 (Fixing some things)
@@ -120,8 +128,18 @@
         "com.unity.burst": "1.8.17",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         "com.unity.nuget.mono-cecil": "1.11.4",
         "com.unity.test-framework": "1.4.5",
+=======
+        "com.unity.test-framework": "1.4.5",
+        "com.unity.nuget.mono-cecil": "1.11.4",
+>>>>>>> parent of b82dd92 (Fixing some things)
+=======
+        "com.unity.test-framework": "1.4.5",
+        "com.unity.nuget.mono-cecil": "1.11.4",
+>>>>>>> parent of b82dd92 (Fixing some things)
 =======
         "com.unity.test-framework": "1.4.5",
         "com.unity.nuget.mono-cecil": "1.11.4",
@@ -192,7 +210,15 @@
     "com.unity.render-pipelines.core": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       "version": "17.0.4",
+=======
+      "version": "17.1.0",
+>>>>>>> parent of b82dd92 (Fixing some things)
+=======
+      "version": "17.1.0",
+>>>>>>> parent of b82dd92 (Fixing some things)
 =======
       "version": "17.1.0",
 >>>>>>> parent of b82dd92 (Fixing some things)
@@ -215,12 +241,30 @@
     "com.unity.render-pipelines.universal": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       "version": "17.0.4",
       "depth": 0,
       "source": "builtin",
       "dependencies": {
         "com.unity.render-pipelines.core": "17.0.4",
         "com.unity.shadergraph": "17.0.4",
+=======
+      "version": "17.1.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.render-pipelines.core": "17.1.0",
+        "com.unity.shadergraph": "17.1.0",
+>>>>>>> parent of b82dd92 (Fixing some things)
+=======
+      "version": "17.1.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.render-pipelines.core": "17.1.0",
+        "com.unity.shadergraph": "17.1.0",
+>>>>>>> parent of b82dd92 (Fixing some things)
 =======
       "version": "17.1.0",
       "depth": 0,
@@ -268,11 +312,27 @@
     "com.unity.shadergraph": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       "version": "17.0.4",
       "depth": 1,
       "source": "builtin",
       "dependencies": {
         "com.unity.render-pipelines.core": "17.0.4",
+=======
+      "version": "17.1.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.render-pipelines.core": "17.1.0",
+>>>>>>> parent of b82dd92 (Fixing some things)
+=======
+      "version": "17.1.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.render-pipelines.core": "17.1.0",
+>>>>>>> parent of b82dd92 (Fixing some things)
 =======
       "version": "17.1.0",
       "depth": 1,

@@ -62,8 +62,16 @@ MonoBehaviour:
       - rid: 5679743405954695170
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       - rid: -2
       - rid: 5679743439557099520
+=======
+      - rid: 5679743405954695171
+>>>>>>> parent of b82dd92 (Fixing some things)
+=======
+      - rid: 5679743405954695171
+>>>>>>> parent of b82dd92 (Fixing some things)
 =======
       - rid: 5679743405954695171
 >>>>>>> parent of b82dd92 (Fixing some things)
@@ -207,6 +215,12 @@ MonoBehaviour:
         smaaSearchTex: {fileID: 2800000, guid: 51eee22c2a633ef4aada830eed57c3fd, type: 3}
         m_TexturesResourcesVersion: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of b82dd92 (Fixing some things)
+=======
+>>>>>>> parent of b82dd92 (Fixing some things)
+=======
 >>>>>>> parent of b82dd92 (Fixing some things)
 =======
 >>>>>>> parent of b82dd92 (Fixing some things)

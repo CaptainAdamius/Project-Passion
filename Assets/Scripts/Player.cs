@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class PlayerHitbox : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI TimeText;
     [SerializeField] TextMeshProUGUI CDText;

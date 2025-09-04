@@ -1,27 +1,2 @@
-<<<<<<< HEAD
-m_EditorVersion: 6000.0.45f1
-m_EditorVersionWithRevision: 6000.0.45f1 (d91bd3d4e081)
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-m_EditorVersion: 6000.0.45f1
-m_EditorVersionWithRevision: 6000.0.45f1 (d91bd3d4e081)
-=======
-m_EditorVersion: 6000.1.11f1
-m_EditorVersionWithRevision: 6000.1.11f1 (9b156bbbd4df)
->>>>>>> parent of b82dd92 (Fixing some things)
-=======
-m_EditorVersion: 6000.1.11f1
-m_EditorVersionWithRevision: 6000.1.11f1 (9b156bbbd4df)
->>>>>>> parent of b82dd92 (Fixing some things)
-=======
-m_EditorVersion: 6000.1.11f1
-m_EditorVersionWithRevision: 6000.1.11f1 (9b156bbbd4df)
->>>>>>> parent of b82dd92 (Fixing some things)
-=======
-m_EditorVersion: 6000.1.11f1
-m_EditorVersionWithRevision: 6000.1.11f1 (9b156bbbd4df)
->>>>>>> parent of b82dd92 (Fixing some things)
->>>>>>> parent of dcc00b4 (I'll just assume this fixes it. Test at home)
+m_EditorVersion: 6000.0.57f1
+m_EditorVersionWithRevision: 6000.0.57f1 (b7b9860b7bbd)

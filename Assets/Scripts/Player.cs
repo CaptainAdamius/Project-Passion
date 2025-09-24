@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] TextMeshProUGUI HitTypeText;
     float parryCooldown = 0;
     float parryTime = 0;
+    
+
     public enum GuardState
     {
         Idle,
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // Managing cooldowns for the parry mechanic
         if (parryTime > 0)
         {
@@ -57,6 +60,9 @@ public class Player : MonoBehaviour
         {
             IdleStart();
         }
+
+        
+        
 
     }
     private void OnTriggerEnter2D(Collider2D collision)

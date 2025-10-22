@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Parry : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI TimeText;
     [SerializeField] TextMeshProUGUI CDText;

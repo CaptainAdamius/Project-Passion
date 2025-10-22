@@ -9,6 +9,7 @@ using static Parry;
 
 public class Bullet : MonoBehaviour
 {
+    private float screenLeft = -242, screenRight = 242, screenBottom = -274, screenTop = 274;
     public float bulletLife = 1f;  // Defines how long before the bullet is destroyed
     public float rotation = 0f;
     public float speed = 1f;
@@ -21,6 +22,8 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        
         spawnPoint = new Vector2(transform.position.x, transform.position.y);
     }
 
@@ -28,6 +31,10 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 pos = transform.position;
+        bool isOutsideBounds = (pos.x < screenLeft || pos.x > screenRight || pos.y < screenBottom || pos.y > screenTop);
+
+        if (isOutsideBounds) Destroy(this.gameObject);
         if (timer > bulletLife) Destroy(this.gameObject);
         timer += Time.deltaTime;
         transform.position = Movement(timer);

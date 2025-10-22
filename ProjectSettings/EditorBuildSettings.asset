@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/[Testing] Parry.unity
+    path: Assets/Scenes/Gameplay.unity
     guid: 034f71a9dd678614b92c3171f5b7f8b9
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity

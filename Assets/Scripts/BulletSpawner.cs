@@ -3,6 +3,8 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using UnityEngine;
 
 
@@ -20,10 +22,13 @@ public class BulletSpawner : MonoBehaviour
     [Header("Spawner Attributes")]
     [SerializeField] private SpawnerType spawnerType;
     [SerializeField] private float firingRate = 1f;
-
+    [SerializeField] private float rotateSpeed = 1f;
 
     private GameObject spawnedBullet;
     private float timer = 0f;
+    private float count = 0f;
+    [SerializeField] private float burstNumber = 0f;
+    [SerializeField] private float burstDelay = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,12 +39,21 @@ public class BulletSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (count == 0)
+        {
+            count = burstNumber;
+        }
         timer += Time.deltaTime;
-        if (spawnerType == SpawnerType.Spin) transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
+        if (spawnerType == SpawnerType.Spin) transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + rotateSpeed + 1f);
         if (timer >= firingRate)
         {
             Fire();
+            count--;
             timer = 0;
+            if (count == 0)
+            {
+                timer -= burstDelay;
+            }
         }
     }
 

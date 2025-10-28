@@ -45,7 +45,7 @@ public class Fist : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, startingPosition, speed * Time.deltaTime);
         }
 
-        if (boss.CurrentState.ToString() == "Phase1")
+        if (boss.CurrentState.ToString() == "Phase1" || boss.CurrentState.ToString() == "Phase3")
         {
             if (boss.movementPattern != side)
             {
@@ -80,7 +80,7 @@ public class Fist : MonoBehaviour
         }
     }
 
-    private bool windupInitiated;
+    public bool windupInitiated;
     private bool soundPlayed;
     public bool fistPunched;
     public void WindupPunch()

@@ -45,13 +45,13 @@ public class Boss : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, movementPositions[0], speed * Time.deltaTime);
             if (gm.gameStarted)
             {
-                bs = BossState.Phase1;
+                bs = BossState.Phase2;
                 Debug.Log("Phase 1 initiated.");
                 movementPattern = "left";
             }
         }
 
-        if (bs == BossState.Phase1)
+        if (bs == BossState.Phase2)
         {
             speed = 1.25f;
             switch (movementPattern)

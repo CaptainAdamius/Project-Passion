@@ -34,6 +34,8 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] Fist fist;
     [SerializeField] private string phase;
 
+
+
     // Start is called before the first frame update
     void Start()
     {

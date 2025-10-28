@@ -13,6 +13,7 @@ public class Fist : MonoBehaviour
     public float windup;
 
     [SerializeField] Boss boss;
+    [SerializeField] Warning warning;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -83,6 +84,7 @@ public class Fist : MonoBehaviour
             windup = 3f;
             windupInitiated = true;
             fistPunched = true;
+            Instantiate(warning, startingPosition - new Vector3(0, 150, 0), Quaternion.identity);
             Debug.Log("Windup initialized.");
         }
     }

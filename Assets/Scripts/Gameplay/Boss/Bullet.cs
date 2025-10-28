@@ -22,8 +22,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+
         spawnPoint = new Vector2(transform.position.x, transform.position.y);
     }
 

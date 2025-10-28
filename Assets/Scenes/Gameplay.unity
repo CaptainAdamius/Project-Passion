@@ -803,6 +803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStarted: 0
   boss: {fileID: 47399762}
+  egd: {fileID: 11400000, guid: c134d0be5d2b1d144bc32b06b6e88d4f, type: 2}
   p1Text: {fileID: 550343767}
   p2Text: {fileID: 296326383}
   p3Text: {fileID: 1278971967}

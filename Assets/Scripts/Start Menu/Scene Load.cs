@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartMenu : MonoBehaviour
+public class SceneLoad : MonoBehaviour
 {
 
     [SerializeField] string SceneName;
 
-    public void StartGame()
+    public void LoadScene()
     {
         SceneManager.LoadScene(SceneName);    
     }

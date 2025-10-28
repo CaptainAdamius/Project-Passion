@@ -91,7 +91,7 @@ public class Boss : MonoBehaviour
             {
                 case BossState.Phase1: bs = BossState.Transition1; break;
                 case BossState.Phase2: bs = BossState.Transition2; break;
-                case BossState.Phase3: SceneManager.LoadScene("Start Menu"); break;
+                case BossState.Phase3: SceneManager.LoadScene("End Menu"); break;
             }
         }
 

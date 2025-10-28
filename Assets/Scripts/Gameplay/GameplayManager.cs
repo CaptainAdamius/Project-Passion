@@ -10,6 +10,7 @@ public class GameplayManager : MonoBehaviour
     private float p1Time = 0f, p2Time = 0f, p3Time = 0f;
 
     [SerializeField] Boss boss;
+    [SerializeField] EndgameData egd;
     [SerializeField] TextMeshProUGUI p1Text;
     [SerializeField] TextMeshProUGUI p2Text;
     [SerializeField] TextMeshProUGUI p3Text;
@@ -40,8 +41,8 @@ public class GameplayManager : MonoBehaviour
             case Boss.BossState.Phase3: p3Time += Time.deltaTime; break;
         }
 
-        p1Text.text = "Phase 1: " + p1Time.ToString("F2") + "s";
-        p2Text.text = "Phase 2: " + p2Time.ToString("F2") + "s";
-        p3Text.text = "Phase 3: " + p3Time.ToString("F2") + "s";
+        p1Text.text = "Phase 1: " + p1Time.ToString("F2") + "s"; egd.setP1Time(p1Time);
+        p2Text.text = "Phase 2: " + p2Time.ToString("F2") + "s"; egd.setP2Time(p2Time);
+        p3Text.text = "Phase 3: " + p3Time.ToString("F2") + "s"; egd.setP3Time(p3Time);
     }
 }

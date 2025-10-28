@@ -29,6 +29,11 @@ public class BulletSpawner : MonoBehaviour
     private float count = 0f;
     [SerializeField] private float burstNumber = 0f;
     [SerializeField] private float burstDelay = 0f;
+
+    [SerializeField] Boss boss;
+    [SerializeField] Fist fist;
+    [SerializeField] private string phase;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,22 +44,29 @@ public class BulletSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (count == 0)
+        if (boss.CurrentState.ToString() == phase)
         {
-            count = burstNumber;
-        }
-        timer += Time.deltaTime;
-        if (spawnerType == SpawnerType.Spin) transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + rotateSpeed + 1f);
-        if (timer >= firingRate)
-        {
-            Fire();
-            count--;
-            timer = 0;
             if (count == 0)
             {
-                timer -= burstDelay;
+                count = burstNumber;
+            }
+            timer += Time.deltaTime;
+            if (spawnerType == SpawnerType.Spin) transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + rotateSpeed + 1f);
+            if (timer >= firingRate)
+            {
+                if ((Vector3.Distance(fist.transform.position, fist.startingPosition) < 0.01f))
+                {
+                    Fire();
+                }
+                count--;
+                timer = 0;
+                if (count == 0)
+                {
+                    timer -= burstDelay;
+                }
             }
         }
+        
     }
 
     private void Fire()

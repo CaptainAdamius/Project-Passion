@@ -1,11 +1,15 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 public class Boss : MonoBehaviour
 {
     public float speed;
-    private Vector3 neutralPosition;
+    [SerializeField] public List<Vector3> movementPositions;
+    public int hp;
+    public string movementPattern;
 
     public enum BossState
     {
@@ -18,19 +22,71 @@ public class Boss : MonoBehaviour
     }
     BossState bs = BossState.Intro;
 
+    public BossState CurrentState;
+
+    [SerializeField] GameplayManager gm;
+    [SerializeField] Fist leftFist;
+    [SerializeField] Fist rightFist;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        neutralPosition = new Vector3(0, 120, 0);
+        hp = 500;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Game start
+        CurrentState = bs;
+
+        // Game intro
         if (bs == BossState.Intro)
         {
-            transform.position = Vector3.Lerp(transform.position, neutralPosition, speed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, movementPositions[0], speed * Time.deltaTime);
+            if (gm.gameStarted)
+            {
+                bs = BossState.Phase1;
+                Debug.Log("Phase 1 initiated.");
+                movementPattern = "left";
+            }
+        }
+
+        if (bs == BossState.Phase1)
+        {
+            speed = 1.25f;
+            switch (movementPattern)
+            {
+                case "left":
+                    transform.position = Vector3.Lerp(transform.position, movementPositions[1], speed * Time.deltaTime);
+                    if (Vector3.Distance(transform.position, movementPositions[1]) < 0.01f) {
+                        movementPattern = "right";
+                        ResetFist(rightFist);
+                        break;
+                    }
+                    break;
+
+                case "right":
+                    transform.position = Vector3.Lerp(transform.position, movementPositions[2], speed * Time.deltaTime);
+                    if (Vector3.Distance(transform.position, movementPositions[2]) < 0.01f) {
+                        movementPattern = "left";
+                        ResetFist(leftFist);
+                        break;
+                    }
+                    break;
+
+                default: break;
+            }
         }
     }
+
+    public void ResetFist(Fist fist)
+    {
+        if (fist.fistPunched)
+        {
+            fist.fistPunched = false;
+            Debug.Log("Reset fist.");
+        }
+    }
+
 }
+

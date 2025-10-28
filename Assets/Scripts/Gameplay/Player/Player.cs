@@ -1,13 +1,15 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] float speed;
     public float screenLeft, screenRight, screenTop, screenBottom;
     float horizontal;
     float vertical;
+    float fireCooldown = 0;
 
     [SerializeField] GameplayManager gm;
+    [SerializeField] PlayerBullet bullet;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,7 +34,23 @@ public class PlayerMovement : MonoBehaviour
             pos.x = Mathf.Clamp(pos.x, screenLeft, screenRight);
             pos.y = Mathf.Clamp(pos.y, screenBottom, screenTop);
             transform.position = pos;
+
+            if (fireCooldown > 0)
+            {
+                fireCooldown -= Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.Space) && fireCooldown <= 0)
+            {
+                FireBullet();
+                fireCooldown = 0.1f;
+            }
         }
         
+    }
+
+    public void FireBullet()
+    {
+        Instantiate(bullet, transform.position + new Vector3(10, 50, 0), Quaternion.identity);
+        Instantiate(bullet, transform.position + new Vector3(-10, 50, 0), Quaternion.identity);
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class Boss : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        hp = 500;
+        hp = 100;
     }
 
     // Update is called once per frame
@@ -45,13 +46,13 @@ public class Boss : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, movementPositions[0], speed * Time.deltaTime);
             if (gm.gameStarted)
             {
-                bs = BossState.Phase2;
+                bs = BossState.Phase1;
                 Debug.Log("Phase 1 initiated.");
                 movementPattern = "left";
             }
         }
 
-        if (bs == BossState.Phase2)
+        if (bs == BossState.Phase1 || bs == BossState.Phase2 || bs == BossState.Phase3)
         {
             speed = 1.25f;
             switch (movementPattern)
@@ -77,6 +78,36 @@ public class Boss : MonoBehaviour
                 default: break;
             }
         }
+
+        if (bs == BossState.Phase1 && hp <= 0)
+        {
+            hp = 100;
+            bs = BossState.Transition1;
+        }
+
+        if (bs == BossState.Phase2 && hp <= 0)
+        {
+            hp = 100;
+            bs = BossState.Transition2;
+        }
+
+        if (bs == BossState.Phase3 && hp <= 0)
+        {
+            SceneManager.LoadScene("Start Menu");
+        }
+
+        if (bs == BossState.Transition1 ||  bs == BossState.Transition2)
+        {
+            transform.position = Vector3.Lerp(transform.position, movementPositions[0], speed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, movementPositions[0]) < 0.01f)
+            {
+                switch (bs)
+                {
+                    case BossState.Transition1: bs = BossState.Phase2; break;
+                    case BossState.Transition2: bs = BossState.Phase3; break;
+                }
+            }
+        }
     }
 
     public void ResetFist(Fist fist)
@@ -86,6 +117,21 @@ public class Boss : MonoBehaviour
             fist.fistPunched = false;
             Debug.Log("Reset fist.");
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.CompareTag("PlayerHitbox"))
+        {
+            switch (bs)
+            {
+                case BossState.Phase1: case BossState.Phase2: case BossState.Phase3:
+                    hp--; Debug.Log(hp); break;
+                default: break;
+            }
+        }
+        
     }
 
 }

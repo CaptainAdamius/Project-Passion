@@ -19,4 +19,12 @@ public class PlayerBullet : MonoBehaviour
         if (isOutsideBounds) Destroy(this.gameObject);
         transform.position += new Vector3(0, speed * Time.deltaTime, 0);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Boss"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

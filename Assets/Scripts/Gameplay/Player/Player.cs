@@ -1,12 +1,17 @@
 using UnityEngine;
+using static Parry;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] float speed;
     public float screenLeft, screenRight, screenTop, screenBottom;
+    float invincibility = 0;
     float horizontal;
     float vertical;
     float fireCooldown = 0;
+
+    public AudioClip playerSound;
+    private AudioSource playerAudio;
 
     [SerializeField] GameplayManager gm;
     [SerializeField] PlayerBullet bullet;
@@ -14,7 +19,7 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +40,10 @@ public class Player : MonoBehaviour
             pos.y = Mathf.Clamp(pos.y, screenBottom, screenTop);
             transform.position = pos;
 
+            if (invincibility > 0)
+            {
+                invincibility -= Time.deltaTime;
+            }
             if (fireCooldown > 0)
             {
                 fireCooldown -= Time.deltaTime;
@@ -52,5 +61,14 @@ public class Player : MonoBehaviour
     {
         Instantiate(bullet, transform.position + new Vector3(10, 50, 0), Quaternion.identity);
         Instantiate(bullet, transform.position + new Vector3(-10, 50, 0), Quaternion.identity);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EnemyHitbox") && invincibility <= 0)
+        {
+            invincibility = 3;
+            playerAudio.PlayOneShot(playerSound);
+        }
     }
 }

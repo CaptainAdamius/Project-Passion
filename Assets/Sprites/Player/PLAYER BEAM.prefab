@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4770901777321747392}
   - component: {fileID: 2699546242201849713}
   - component: {fileID: -7699302947969678752}
+  - component: {fileID: 7889343709507307942}
   m_Layer: 0
   m_Name: PLAYER BEAM
   m_TagString: PlayerHitbox
@@ -102,3 +103,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1000
   player: {fileID: 5344132878930001117, guid: ea8f95886ed561443be63a3eba3f3854, type: 3}
+--- !u!70 &7889343709507307942
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5048404554844845242}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 10, y: 70}
+  m_Direction: 0

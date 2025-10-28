@@ -12,12 +12,16 @@ public class Fist : MonoBehaviour
     public string punchState;
     public float windup;
 
+    public AudioClip fistSound;
+    private AudioSource fistAudio;
+
     [SerializeField] Boss boss;
     [SerializeField] Warning warning;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        fistAudio = GetComponent<AudioSource>();
         if (side == "left")
         {
             startingPosition = new Vector3(-96, 150, 0);
@@ -56,6 +60,7 @@ public class Fist : MonoBehaviour
                 }
                 if (windup < 0 && windupInitiated)
                 {
+                    PlayFistSFX();
                     transform.position = Vector3.MoveTowards(transform.position, endingPosition, speed * Time.deltaTime);
                     speed += 50;
                 }
@@ -76,6 +81,7 @@ public class Fist : MonoBehaviour
     }
 
     private bool windupInitiated;
+    private bool soundPlayed;
     public bool fistPunched;
     public void WindupPunch()
     {
@@ -84,6 +90,7 @@ public class Fist : MonoBehaviour
             windup = 3f;
             windupInitiated = true;
             fistPunched = true;
+            soundPlayed = false;
             Instantiate(warning, startingPosition - new Vector3(0, 150, 0), Quaternion.identity);
             Debug.Log("Windup initialized.");
         }
@@ -96,6 +103,15 @@ public class Fist : MonoBehaviour
             windup = 1f;
             windupInitiated = false;
             Debug.Log("Return initialized.");
+        }
+    }
+
+    public void PlayFistSFX()
+    {
+        if (!soundPlayed)
+        {
+            soundPlayed = true;
+            fistAudio.PlayOneShot(fistSound);
         }
     }
 }

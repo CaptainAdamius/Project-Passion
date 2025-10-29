@@ -1,6 +1,4 @@
 using UnityEngine;
-using static Parry;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +17,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] GameplayManager gm;
     [SerializeField] PlayerBullet bullet;
+    [SerializeField] PlayerShield shield;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -87,6 +86,7 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("EnemyHitbox") && invincibility <= 0)
         {
+            Instantiate(shield, transform.position, Quaternion.identity);
             invincibility = 3;
             playerAudio.PlayOneShot(playerSound);
         }

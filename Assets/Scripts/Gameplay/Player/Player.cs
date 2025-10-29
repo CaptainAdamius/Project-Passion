@@ -1,10 +1,14 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] private SpriteRenderer render;
+    [SerializeField] TextMeshProUGUI hpText;
     public float screenLeft, screenRight, screenTop, screenBottom;
+    private int hp;
     float invincibility = 0;
     float horizontal;
     float vertical;
@@ -26,11 +30,15 @@ public class Player : MonoBehaviour
         playerAudio = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
+        hp = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        hpText.text = "Player HP: " + hp.ToString();
+
         //All actions within this box activate only when the game starts
         if (gm.gameStarted)
         {
@@ -70,8 +78,6 @@ public class Player : MonoBehaviour
                 fireCooldown = 0.1f;
             }
 
-            
-            
         }
         
     }
@@ -86,9 +92,17 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("EnemyHitbox") && invincibility <= 0)
         {
+            hp--;
             Instantiate(shield, transform.position, Quaternion.identity);
             invincibility = 3;
             playerAudio.PlayOneShot(playerSound);
+
+            if (hp <= 0)
+            {
+                SceneManager.LoadScene("Game Over");
+            }
         }
+
+        
     }
 }

@@ -102,7 +102,5 @@ public class Player : MonoBehaviour
                 SceneManager.LoadScene("Game Over");
             }
         }
-
-        
     }
 }

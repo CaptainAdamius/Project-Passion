@@ -1,0 +1,2 @@
+WASD - Movement
+Spacebar (Hold) - Fire projectiles

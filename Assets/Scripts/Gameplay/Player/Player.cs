@@ -1,9 +1,11 @@
 using UnityEngine;
 using static Parry;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] private SpriteRenderer render;
     public float screenLeft, screenRight, screenTop, screenBottom;
     float invincibility = 0;
     float horizontal;
@@ -13,13 +15,18 @@ public class Player : MonoBehaviour
     public AudioClip playerSound;
     private AudioSource playerAudio;
 
+    Animator anim;
+
     [SerializeField] GameplayManager gm;
     [SerializeField] PlayerBullet bullet;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerAudio = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -31,6 +38,16 @@ public class Player : MonoBehaviour
             // Enable movement
             horizontal = Input.GetAxisRaw("Horizontal");
             vertical = Input.GetAxisRaw("Vertical");
+
+            if (horizontal > 0)
+            {
+                render.flipX = false;
+            }
+            if (horizontal < 0)
+            {
+                render.flipX = true;
+            }
+            anim.SetFloat("horizontal", horizontal);
 
             Vector3 moveDirection = new Vector2 (horizontal, vertical);
             transform.position += moveDirection * Time.deltaTime * speed;
@@ -53,6 +70,9 @@ public class Player : MonoBehaviour
                 FireBullet();
                 fireCooldown = 0.1f;
             }
+
+            
+            
         }
         
     }

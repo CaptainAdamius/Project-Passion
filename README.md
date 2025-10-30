@@ -1,2 +1,2 @@
 # Project-Passion
-Top-down action game with emphasis on parrying and staying aggressive
+Top-down action game with emphasis on dodging bullet hell patterns
